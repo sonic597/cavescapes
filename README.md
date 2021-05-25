@@ -1,5 +1,5 @@
 # Cavescapes
-A game that uses a Monte-Calro based learning algorithm to traverse the world.
+A game that uses a Monte-Calro based learning algorithm to traverse a procedurally generated world.
 
 ## Running the Game
 Run MAIN.py using python 3 or above. Requires Numpy and PyGame installed.
