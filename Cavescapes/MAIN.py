@@ -3,8 +3,15 @@ import numpy as np
 from PPdraft_grid_algorithm import adj_tiles, maze_algorithm
 import AI_v2
 import time
+import game_config
 
-grid_size = 4
+# Editable variables
+grid_size = game_config.grid_size
+
+#AI Variables
+elipson_AI = game_config.elipson # the rate of exploring vs. exploiting (between 0 (exploits every turn) and 1 (explores every turn))
+unseen_weighting_AI = game_config.unseen_weighting # the weighting (usually >1) to unseen tiles to encourage (or discourage) new pathfinding
+unk_weighting_AI = game_config.unk_weighting # the bonus added to the value for an unseen block type (higher values encourage exploration)
 
 pygame.init()
 pygame.font.init()
@@ -185,8 +192,8 @@ def flash_screen(string):
 
 
 # declaring the AI
-agent_v2 = AI_v2.agent(0.01,size, 2, 5)
-# AI @ ai.py
+agent_v2 = AI_v2.agent(elipson_AI,size, unseen_weighting_AI, unk_weighting_AI)
+# AI located @ ai.py
 
 
 def game_loop(**kwargs): # args1 = AI_ACTIVE, args2 = FAST_ACTIVE, args4 = RESET_ARRAY
